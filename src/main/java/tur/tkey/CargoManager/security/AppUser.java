@@ -7,7 +7,7 @@ import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import tur.tkey.CargoManager.model.AppUserRole;
+import tur.tkey.CargoManager.model.userModel.AppUserRole;
 
 import javax.persistence.*;
 import java.util.Collection;

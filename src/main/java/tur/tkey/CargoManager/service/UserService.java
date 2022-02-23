@@ -1,4 +1,4 @@
-package tur.tkey.CargoManager.security;
+package tur.tkey.CargoManager.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +9,7 @@ import tur.tkey.CargoManager.repository.AppUserRepository;
 
 @Service
 @AllArgsConstructor
-public class AppUserService implements UserDetailsService {
+public class UserService implements UserDetailsService {
 
     private static final String USER_NOT_FOUND_MSG ="user with %s not found";
 
@@ -20,5 +20,10 @@ public class AppUserService implements UserDetailsService {
         return userRepository.findByEmail(email)
                 .orElseThrow(()->
                         new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG,email)));
+    }
+
+    public boolean validateEmail(String email){
+        return true;
+                //todo
     }
 }

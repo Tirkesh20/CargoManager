@@ -1,4 +1,4 @@
-package tur.tkey.CargoManager.model;
+package tur.tkey.CargoManager.model.userModel;
 
 public enum AppUserRole {
     USER
