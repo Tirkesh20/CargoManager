@@ -13,15 +13,8 @@ import javax.persistence.*;
 @Table(name = "Cargos")
 public class Cargo {
 
-    @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
-            allocationSize = 1
-    )
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private float height;
     private float weight;
@@ -29,4 +22,6 @@ public class Cargo {
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "transport_id",nullable = false)
     private Transport transport;
+
+    private boolean delivered;
 }

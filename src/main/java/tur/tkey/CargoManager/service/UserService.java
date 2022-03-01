@@ -1,29 +1,17 @@
 package tur.tkey.CargoManager.service;
 
-import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-import tur.tkey.CargoManager.repository.AppUserRepository;
+import tur.tkey.CargoManager.model.userModel.Role;
+import tur.tkey.CargoManager.model.userModel.RoleType;
+import tur.tkey.CargoManager.model.userModel.User;
 
-@Service
-@AllArgsConstructor
-public class UserService implements UserDetailsService {
+import java.util.List;
 
-    private static final String USER_NOT_FOUND_MSG ="user with %s not found";
+public interface UserService {
 
-    private final AppUserRepository userRepository;
+    void save(User user);
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userRepository.findByEmail(email)
-                .orElseThrow(()->
-                        new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG,email)));
-    }
-
-    public boolean validateEmail(String email){
-        return true;
-                //todo
-    }
+    void saveRole(Role role);
+    void addRoleToUser(String username, RoleType role);
+    User getUser(String username);
+    List<User> getUser();
 }

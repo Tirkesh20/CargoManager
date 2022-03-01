@@ -1,6 +1,6 @@
 package tur.tkey.CargoManager.model.userModel;
 
-public enum AppUserRole {
+public enum RoleType {
     USER
     ,CARGO
     ,ADMIN

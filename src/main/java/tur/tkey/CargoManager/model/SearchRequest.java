@@ -4,12 +4,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.OffsetDateTime;
+
 @NoArgsConstructor
 @Getter
 @Setter
-public class FilterRequest {
+public class SearchRequest {
     private String startPoint;
     private String endPoint;
-    private Cargo cargo;
+    private OffsetDateTime tookOfTime;
     private boolean onlinePayment;
 }

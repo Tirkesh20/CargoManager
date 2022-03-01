@@ -2,9 +2,9 @@ package tur.tkey.CargoManager.model.transport;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.Hibernate;
 import tur.tkey.CargoManager.model.Cargo;
+import tur.tkey.CargoManager.model.userModel.User;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
@@ -15,7 +15,6 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@ToString
 public class Transport {
     @SequenceGenerator(
             name = "student_sequence",
@@ -27,7 +26,6 @@ public class Transport {
             generator = "student_sequence"
     )
     private Long id;
-    private TransportType type;
     private String startPoint;
     private String endPoint;
     private OffsetDateTime departureTime;
@@ -37,7 +35,6 @@ public class Transport {
     private TransportType transportType;
 
     @OneToMany(mappedBy = "transport",fetch = FetchType.LAZY)
-    @ToString.Exclude
     private Set<Cargo> cargos;
 
     @Override
@@ -51,5 +48,20 @@ public class Transport {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Transport{" +
+                "id=" + id +
+                ", startPoint='" + startPoint + '\'' +
+                ", endPoint='" + endPoint + '\'' +
+                ", departureTime=" + departureTime +
+                ", arrivalTime=" + arrivalTime +
+                ", onlinePayment=" + onlinePayment +
+                ", closed=" + closed +
+                ", transportType=" + transportType +
+                ", cargos=" + cargos +
+                '}';
     }
 }
