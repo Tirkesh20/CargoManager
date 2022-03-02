@@ -41,6 +41,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticate(@RequestBody LoginRequest loginRequest){
+        // TODO: 02.03.2022 -> need to move logic to service layer
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 

@@ -5,6 +5,6 @@ import tur.tkey.CargoManager.payload.request.RegistrationRequest;
 
 public interface AuthenticationService {
 
-    public void register(RegistrationRequest registrationRequest);
-    public void login(LoginRequest loginRequest);
+    public boolean register(RegistrationRequest registrationRequest);
+    public boolean login(LoginRequest loginRequest);
 }

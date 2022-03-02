@@ -2,8 +2,11 @@ package tur.tkey.CargoManager.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import tur.tkey.CargoManager.model.userModel.Role;
+import tur.tkey.CargoManager.model.userModel.RoleType;
+
+import java.util.Optional;
 
 
 public interface RoleRepository extends JpaRepository<Role,Long> {
-    Role findByRoleType(String role);
+    Optional<Role> findByRoleType(RoleType role);
 }
