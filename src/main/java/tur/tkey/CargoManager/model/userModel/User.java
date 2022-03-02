@@ -12,7 +12,7 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Users_table")
+@Table(name = "users_table")
 public class User implements UserDetails {
 //todo-> is it ok to do like this???
     @Id
@@ -31,9 +31,9 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
-    private boolean active;
-    private  Boolean locked;
-    private  Boolean enabled;
+    private Boolean active=false;
+    private  Boolean locked=false;
+    private  Boolean enabled=false;
 
     public User(String firstname, String lastname, String email, String password) {
         this.firstname = firstname;

@@ -9,11 +9,10 @@ import java.util.Optional;
 
 public interface UserService {
 
-    boolean signUpUser(User user);
+    String signUpUser(User user);
     Optional<Role> findRoleName(RoleType roleType);
-    void saveRole(Role role);
-    void addRoleToUser(String username, RoleType role);
+    void enableUser(String email);
     User getUser(String username);
-    List<User> getUser();
+    List<User> getUsers();
 }
 //todo -> need to add more concrete functions
