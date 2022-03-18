@@ -3,39 +3,29 @@ package tur.tkey.CargoManager.model.transport;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Hibernate;
-import tur.tkey.CargoManager.model.Cargo;
 import tur.tkey.CargoManager.model.userModel.User;
 
 import javax.persistence.*;
-import java.time.OffsetDateTime;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.Objects;
-import java.util.Set;
 
-@Table(name = "transports")
+@Table(name = "transport")
 @Entity
 @Getter
 @Setter
 public class Transport {
-    @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
-            allocationSize = 1
-    )
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
-    )
-    private Long id;
-    private String startPoint;
-    private String endPoint;
-    private OffsetDateTime departureTime;
-    private  OffsetDateTime arrivalTime;
-    private boolean onlinePayment;
-    private boolean closed;
-    private TransportType transportType;
 
-    @OneToMany(mappedBy = "transport",fetch = FetchType.LAZY)
-    private Set<Cargo> cargos;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private TransportType transportType;
+    @Column(name = "rating") @Min(1) @Max(10)
+    private int rating;
+
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "user_id",nullable = false)
+    private User user;
 
     @Override
     public boolean equals(Object o) {
@@ -54,14 +44,7 @@ public class Transport {
     public String toString() {
         return "Transport{" +
                 "id=" + id +
-                ", startPoint='" + startPoint + '\'' +
-                ", endPoint='" + endPoint + '\'' +
-                ", departureTime=" + departureTime +
-                ", arrivalTime=" + arrivalTime +
-                ", onlinePayment=" + onlinePayment +
-                ", closed=" + closed +
                 ", transportType=" + transportType +
-                ", cargos=" + cargos +
                 '}';
     }
 }
